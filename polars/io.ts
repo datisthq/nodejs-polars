@@ -44,6 +44,7 @@ const readCsvDefaultOptions: Partial<ReadCsvOptions> = {
   chunkSize: 10000,
   skipRows: 0,
   sep: ",",
+  quoteChar: '"',
   rechunk: false,
   encoding: "utf8",
   lowMemory: false,
@@ -168,7 +169,7 @@ export function readRecords(
  * @param options.schema -Set the CSV file's schema. This only accepts datatypes that are implemented in the csv parser and expects a complete Schema.
  * @param options.lowMemory - Reduce memory usage in expense of performance.
  * @param options.commentPrefix - character that indicates the start of a comment line, for instance '#'.
- * @param options.quoteChar -character that is used for csv quoting, default = ''. Set to null to turn special handling and escaping of quotes off.
+ * @param options.quoteChar -character that is used for csv quoting, default = '"'. Set to null to turn special handling and escaping of quotes off.
  * @param options.nullValues - Values to interpret as null values. You can provide a
  *     - `string` -> all values encountered equal to this string will be null
  *     - `Array<string>` -> A null value per column.
@@ -232,6 +233,7 @@ const scanCsvDefaultOptions: Partial<ScanCsvOptions> = {
   ignoreErrors: true,
   skipRows: 0,
   sep: ",",
+  quoteChar: '"',
   eolChar: "\n",
   rechunk: false,
   encoding: "utf8",
@@ -252,7 +254,7 @@ const scanCsvDefaultOptions: Partial<ScanCsvOptions> = {
  *     `x` being an enumeration over every column in the dataset.
  * @param options.sep -Character to use as delimiter in the file.
  * @param options.commentPrefix - character that indicates the start of a comment line, for instance '#'.
- * @param options.quoteChar -character that is used for csv quoting, default = ''. Set to null to turn special handling and escaping of quotes off.
+ * @param options.quoteChar -character that is used for csv quoting, default = '"'. Set to null to turn special handling and escaping of quotes off.
  * @param options.skipRows -Start reading after `skipRows` position.
  * @param options.nullValues - Values to interpret as null values. You can provide a
  *     - `string` -> all values encountered equal to this string will be null
@@ -632,7 +634,7 @@ export function scanIPC(path, options = {}) {
  * @param options.dtype -Overwrite the dtypes during inference.
  * @param options.lowMemory - Reduce memory usage in expense of performance.
  * @param options.commentPrefix - character that indicates the start of a comment line, for instance '#'.
- * @param options.quoteChar -character that is used for csv quoting, default = ''. Set to null to turn special handling and escaping of quotes off.
+ * @param options.quoteChar -character that is used for csv quoting, default = '"'. Set to null to turn special handling and escaping of quotes off.
  * @param options.nullValues - Values to interpret as null values. You can provide a
  *     - `string` -> all values encountered equal to this string will be null
  *     - `Array<string>` -> A null value per column.
